@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["JHVW4W8RD8.com.DinkInBuild.DinkIn-App"],
+        "components": [ { "/": "/q/*" } ]
+      }
+    ]
+  }
+}
