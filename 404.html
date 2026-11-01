@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DinkIn — Find your next pickleball game</title>
+<meta name="description" content="DinkIn is a social pickleball app: find games, courts and players near you.">
+<meta name="theme-color" content="#0B2545">
+<style>
+  :root { --navy:#0B2545; --green:#22C55E; --ink:#0F172A; --muted:#64748B; --bg:#F6F8FB; --card:#FFFFFF; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#F1F5F9; --muted:#94A3B8; --bg:#0A1220; --card:#111C2E; } }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:var(--bg); color:var(--ink);
+         font-family:-apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Segoe UI", Roboto, sans-serif; padding:24px 16px; }
+  .card { width:100%; max-width:420px; background:var(--card); border-radius:28px; padding:36px 28px 28px;
+          text-align:center; box-shadow:0 20px 50px -20px rgba(11,37,69,.35); }
+  .logo { width:84px; height:84px; margin:0 auto 18px; border-radius:22px;
+          background:linear-gradient(135deg, var(--green), var(--navy)); display:flex; align-items:center; justify-content:center;
+          font-size:42px; }
+  h1 { margin:0 0 8px; font-size:28px; letter-spacing:-.02em; }
+  p { margin:0 0 24px; color:var(--muted); line-height:1.45; font-size:16px; }
+  .btn { display:block; width:100%; padding:15px 30px; border-radius:14px; font-weight:700; font-size:17px;
+         text-decoration:none; margin-top:10px; }
+  .primary { background:linear-gradient(180deg, #2BD066, var(--green)); color:#fff;
+             box-shadow:0 8px 20px -8px rgba(34,197,94,.6); }
+  .secondary { background:transparent; color:var(--ink); border:1.5px solid rgba(100,116,139,.35); }
+  .hidden { display:none; }
+  .fine { margin-top:22px; font-size:13px; color:var(--muted); }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo" aria-hidden="true">🏓</div>
+    <h1 id="title">DinkIn</h1>
+    <p id="lead">Find pickleball games, courts and players near you.</p>
+    <a id="open" class="btn primary hidden" href="#">Open in DinkIn</a>
+    <a id="get" class="btn" href="https://testflight.apple.com/join/huEnjgKw">Get DinkIn (free beta)</a>
+    <div class="fine">iPhone app · Beta on TestFlight</div>
+  </main>
+<script>
+  // A DinkIn QR / shared link: https://dinkinapp.com/q/<kind>/…?… → dinkin://<kind>/…?…
+  // When DinkIn is installed, iOS opens the app before this page loads;
+  // this page is the fallback (app not installed, or opened in another browser).
+  (function () {
+    var m = location.pathname.match(/^\/q\/([^\/]+)(\/.*)?$/i);
+    var get = document.getElementById('get');
+    if (!m) { get.classList.add('primary'); return; }
+    var kind = m[1].toLowerCase();
+    var names = { player:'a player', group:'a group', club:'a club', game:'a game', session:'a game',
+                  tournament:'a tournament', league:'a league', event:'an event',
+                  court:'a court', venue:'a court', coach:'a coach', clinic:'a clinic' };
+    document.getElementById('title').textContent = 'Open ' + (names[kind] || 'this') + ' in DinkIn';
+    document.getElementById('lead').textContent =
+      'This link opens in the DinkIn app. Have it already? Tap Open. New here? Get the free beta, then scan again.';
+    var open = document.getElementById('open');
+    open.href = 'dinkin://' + kind + (m[2] || '') + location.search;
+    open.classList.remove('hidden');
+    get.classList.add('secondary');
+  })();
+</script>
+</body>
+</html>
