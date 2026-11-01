@@ -6,6 +6,8 @@
 <title>DinkIn — Find your next pickleball game</title>
 <meta name="description" content="DinkIn is a social pickleball app: find games, courts and players near you.">
 <meta name="theme-color" content="#0B2545">
+<link rel="icon" href="/icon.png">
+<link rel="apple-touch-icon" href="/icon.png">
 <style>
   :root { --navy:#0B2545; --green:#22C55E; --ink:#0F172A; --muted:#64748B; --bg:#F6F8FB; --card:#FFFFFF; }
   @media (prefers-color-scheme: dark) { :root { --ink:#F1F5F9; --muted:#94A3B8; --bg:#0A1220; --card:#111C2E; } }
@@ -16,8 +18,7 @@
   .card { width:100%; max-width:420px; background:var(--card); border-radius:28px; padding:36px 28px 28px;
           text-align:center; box-shadow:0 20px 50px -20px rgba(11,37,69,.35); }
   .logo { width:84px; height:84px; margin:0 auto 18px; border-radius:22px;
-          background:linear-gradient(135deg, var(--green), var(--navy)); display:flex; align-items:center; justify-content:center;
-          font-size:42px; }
+          display:block; box-shadow:0 8px 20px -10px rgba(11,37,69,.5); }
   h1 { margin:0 0 8px; font-size:28px; letter-spacing:-.02em; }
   p { margin:0 0 24px; color:var(--muted); line-height:1.45; font-size:16px; }
   .btn { display:block; width:100%; padding:15px 30px; border-radius:14px; font-weight:700; font-size:17px;
@@ -31,7 +32,7 @@
 </head>
 <body>
   <main class="card">
-    <div class="logo" aria-hidden="true">🏓</div>
+    <img class="logo" src="/icon.png" alt="DinkIn app icon" width="84" height="84">
     <h1 id="title">DinkIn</h1>
     <p id="lead">Find pickleball games, courts and players near you.</p>
     <a id="open" class="btn primary hidden" href="#">Open in DinkIn</a>
